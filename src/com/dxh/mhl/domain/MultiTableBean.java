@@ -2,7 +2,12 @@ package com.dxh.mhl.domain;
 
 import java.util.Date;
 
-public class Bill {
+/**
+ * @author 韩顺平
+ * @version 1.0
+ * 这是一个javabean 可以和多张表进行对应
+ */
+public class MultiTableBean {
     private Integer id;
     private String billId;
     private Integer menuId;
@@ -11,19 +16,50 @@ public class Bill {
     private Integer diningTableId;
     private Date billDate;
     private String state;
+    //增加一个来自menu表的列 name
+    //思考 这里的属性名是否一定要和表的列名保持一致.
+    //答: 可以不一致，但是需要sql做相应的修改, 规范需要保持一致.
+    private String name;
+    //增加来自menu表的列 price
+    private Double price;//默认值 nulll
 
-    public Bill(Integer id, String billId, Integer menuId, Integer nums, Double money, Integer diningTableId, Date billDate, String state) {
-        this.id = id;
-        this.billId = billId;
-        this.menuId = menuId;
-        this.nums = nums;
-        this.money = money;
-        this.diningTableId = diningTableId;
-        this.billDate = billDate;
-        this.state = state;
+    public MultiTableBean() {
+        System.out.println("反射调用....");
     }
 
-    public Bill() {
+//    public MultiTableBean(Integer id, String billId, Integer menuId, Integer nums, Double money, Integer diningTableId, Date billDate, String state, String name, Double price) {
+//        this.id = id;
+//        this.billId = billId;
+//        this.menuId = menuId;
+//        this.nums = nums;
+//        this.money = money;
+//        this.diningTableId = diningTableId;
+//        this.billDate = billDate;
+//        this.state = state;
+//        this.name = name;
+//        this.price = price;
+//    }
+
+    //给price生成setter 和 getter
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+
+    //给name生成setter 和 getter
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getId() {
@@ -92,13 +128,14 @@ public class Bill {
 
     @Override
     public String toString() {
-        return id +
+        return  id +
                 "\t\t" + menuId +
                 "\t\t\t" + nums +
                 "\t\t\t" + money +
                 "\t" + diningTableId +
                 "\t\t" + billDate +
-                "\t\t" + state ;
+                "\t\t" + state +
+                "\t\t" + name +
+                "\t\t" + price;
     }
-
 }

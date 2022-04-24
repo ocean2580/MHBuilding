@@ -33,4 +33,15 @@ public class DiningTableService { // 业务
 
     }
 
+
+    public boolean updateDiningTableStateToFree(int id, String state) {
+
+        int update =
+                diningTableDAO.update("update diningTable set state=? , orderName='', orderTel='' where id=?", state, id);
+        return update>0;
+
+    }
+
+
+
 }

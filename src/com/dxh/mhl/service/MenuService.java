@@ -14,7 +14,7 @@ public class MenuService {
 
 
     public Menu getMenuById(int id) {
-        return menuDAO.querySingle("select * from diningTable where id = ?",
+        return menuDAO.querySingle("select * from menu where id = ?",
                 Menu.class,id);
     }
 

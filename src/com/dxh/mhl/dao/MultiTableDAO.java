@@ -1,8 +1,11 @@
-package com.dxh.mhl.domain;
+package com.dxh.mhl.dao;
+
+import com.dxh.mhl.domain.MultiTableBean;
 
 import java.util.Date;
 
-public class Bill {
+public class MultiTableDAO extends BasicDAO<MultiTableBean>{
+
     private Integer id;
     private String billId;
     private Integer menuId;
@@ -12,19 +15,8 @@ public class Bill {
     private Date billDate;
     private String state;
 
-    public Bill(Integer id, String billId, Integer menuId, Integer nums, Double money, Integer diningTableId, Date billDate, String state) {
-        this.id = id;
-        this.billId = billId;
-        this.menuId = menuId;
-        this.nums = nums;
-        this.money = money;
-        this.diningTableId = diningTableId;
-        this.billDate = billDate;
-        this.state = state;
-    }
-
-    public Bill() {
-    }
+    private String name;
+    private Double price;
 
     public Integer getId() {
         return id;
@@ -90,15 +82,35 @@ public class Bill {
         this.state = state;
     }
 
-    @Override
-    public String toString() {
-        return id +
-                "\t\t" + menuId +
-                "\t\t\t" + nums +
-                "\t\t\t" + money +
-                "\t" + diningTableId +
-                "\t\t" + billDate +
-                "\t\t" + state ;
+    public String getName() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public MultiTableDAO() {
+    }
+
+    public MultiTableDAO(Integer id, String billId, Integer menuId, Integer nums, Double money, Integer diningTableId, Date billDate, String state, String name, Double price) {
+        this.id = id;
+        this.billId = billId;
+        this.menuId = menuId;
+        this.nums = nums;
+        this.money = money;
+        this.diningTableId = diningTableId;
+        this.billDate = billDate;
+        this.state = state;
+        this.name = name;
+        this.price = price;
+    }
 }
